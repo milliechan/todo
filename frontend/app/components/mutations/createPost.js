@@ -29,7 +29,8 @@ const createPost = graphql(createPostMutation, {
       //   store.writeQuery({ query: loadPostsQuery, data })
       // }
       refetchQueries: [{
-        query: loadPostsQuery
+        query: loadPostsQuery,
+        variables: { title: '' }
       }]
     })
   })

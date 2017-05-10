@@ -8,12 +8,18 @@ Types::QueryType = GraphQL::ObjectType.define do
     type Types::PostType
     argument :id, !types.ID
     description "Find a todo by ID"
-    resolve ->(obj, args, ctx) { Post.find(args["id"]) }
+    resolve ->(obj, args, ctx) { Post.find(args[:id]) }
   end
 
   field :posts do
     type types[Types::PostType]
-    resolve ->(obj, args, ctx) { Post.all }
+    argument :title, !types.String
+    resolve ->(obj, args, ctx) do
+      if args[:title].present?
+        return Post.where(title: args[:title])
+      end
+      Post.all
+    end
   end
 
   # connection :posts do
