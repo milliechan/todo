@@ -3,10 +3,12 @@ import PostItem from 'PostItem';
 import loadPosts from 'queries/loadPosts'
 
 const PostList = (props) => {
-  console.log(props)
+  if (props.data.loading) {
+    return <div>Loading...</div>
+  }
   return (
     <ul>
-      { [{ id: 0, title: 'make a kebab' }].map((post) => <PostItem key={ post.id } post={ post }/>) }
+      { props.data.posts && props.data.posts.map((post) => <PostItem key={ post.id } post={ post }/>) }
     </ul>
   )
 }

@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo'
 
-const loadPostsQuery = gql`
-  query Posts {
+export const loadPostsQuery = gql`
+  query LoadPosts {
     posts {
       id
       title

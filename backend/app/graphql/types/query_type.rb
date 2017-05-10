@@ -11,10 +11,15 @@ Types::QueryType = GraphQL::ObjectType.define do
     resolve ->(obj, args, ctx) { Post.find(args["id"]) }
   end
 
-  connection :posts do
-    type Types::PostType.connection_type
+  field :posts do
+    type types[Types::PostType]
     resolve ->(obj, args, ctx) { Post.all }
   end
+
+  # connection :posts do
+  #   type Types::PostType.connection_type
+  #   resolve ->(obj, args, ctx) { Post.all }
+  # end
 
   # TODO: remove me
   field :testField, types.String do

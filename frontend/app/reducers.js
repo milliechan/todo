@@ -12,7 +12,7 @@ function kebabPhoto(state = { show: false }, action) {
       return state
   }
 }
-console.log(client)
+console.log(client.reducer())
 const reducers = combineReducers({
   kebabPhoto,
   apollo: client.reducer()

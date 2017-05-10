@@ -1,10 +1,13 @@
 const path = require('path');
 
+const ASSET_PATH = '/app'
+
 module.exports = {
   entry: "./app/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: ASSET_PATH
   },
   module: {
     rules: [
