@@ -5,6 +5,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducers from './reducers'
 import { ApolloProvider } from 'react-apollo'
+import client from './apolloClient'
 
 const store = createStore(
   reducers,
